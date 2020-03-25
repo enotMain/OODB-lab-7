@@ -1,0 +1,59 @@
+CREATE TABLE public.bag
+(
+    id bigint NOT NULL,
+    company_id bigint,
+    name text COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    cost integer,
+    CONSTRAINT bag_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.bankaccount
+(
+    id bigint NOT NULL,
+    accountnumber bigint,
+    CONSTRAINT bankaccount_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.client
+(
+    id bigint NOT NULL,
+    name text COLLATE pg_catalog."default",
+    surname text COLLATE pg_catalog."default",
+    email text COLLATE pg_catalog."default",
+    phonenumber integer,
+    CONSTRAINT client_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.client_bankaccount
+(
+    client_id bigint NOT NULL,
+    bankaccount_id bigint NOT NULL
+);
+
+CREATE TABLE public.company
+(
+    id bigint NOT NULL,
+    name text COLLATE pg_catalog."default",
+    description text COLLATE pg_catalog."default",
+    CONSTRAINT company_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.transaction
+(
+    id bigint NOT NULL,
+    date date,
+    CONSTRAINT transaction_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.transaction_bag
+(
+    transaction_id bigint NOT NULL,
+    bag_id bigint NOT NULL
+);
+
+CREATE TABLE public.transaction_client
+(
+    transaction_id bigint NOT NULL,
+    client_id bigint NOT NULL
+);
